@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="兴曰 App 支持中心">
+    <title>支持中心 | 兴曰</title>
+    <style>
+        :root { --ink:#16130f; --muted:#756d62; --paper:#f4efe5; --accent:#d55338; --line:rgba(22,19,15,.14); }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        body { min-height:100vh; color:var(--ink); background:var(--paper); font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Helvetica Neue",sans-serif; line-height:1.7; -webkit-font-smoothing:antialiased; }
+        body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.24; background-image:radial-gradient(rgba(22,19,15,.15) .55px,transparent .55px); background-size:5px 5px; }
+        .wrap { position:relative; width:min(880px,calc(100% - 40px)); margin:auto; padding:72px 0 44px; }
+        header { min-height:320px; display:flex; flex-direction:column; justify-content:space-between; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:24px 0 34px; animation:arrive .7s ease both; }
+        .eyebrow,.date { color:var(--muted); font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+        h1 { max-width:720px; font-size:clamp(64px,13vw,120px); line-height:.88; letter-spacing:-.08em; font-weight:900; }
+        h1 span { color:var(--accent); }
+        .intro { max-width:520px; margin:26px 0 72px auto; color:var(--muted); font-size:18px; }
+        .switch { display:flex; gap:8px; margin-bottom:26px; }
+        button { border:1px solid var(--line); border-radius:999px; padding:9px 16px; color:var(--muted); background:transparent; cursor:pointer; font:inherit; font-size:13px; transition:.2s ease; }
+        button:hover,button.active { color:var(--paper); background:var(--ink); transform:translateY(-1px); }
+        article { display:none; animation:arrive .45s ease both; }
+        article.active { display:block; }
+        .row { display:grid; grid-template-columns:220px 1fr; gap:48px; padding:30px 0; border-top:1px solid var(--line); }
+        h2 { font-size:15px; letter-spacing:.06em; }
+        h3 { margin-bottom:8px; font-size:20px; }
+        p,li { color:var(--muted); }
+        .answer + .answer { margin-top:28px; }
+        ul { padding-left:19px; }
+        a { color:var(--accent); font-weight:700; text-decoration:none; }
+        a:hover { text-decoration:underline; }
+        footer { display:flex; justify-content:space-between; gap:20px; margin-top:68px; padding-top:24px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+        @keyframes arrive { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+        @media (max-width:650px) { .wrap{padding-top:36px}.row{grid-template-columns:1fr;gap:14px}.intro{margin:24px 0 52px}header{min-height:270px}footer{flex-direction:column} }
+        @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; } }
+    </style>
+</head>
+<body>
+    <main class="wrap">
+        <header>
+            <div class="eyebrow">Support / 支持中心</div>
+            <h1>兴<span>曰</span></h1>
+        </header>
+        <p class="intro">上下滑动，读一句王兴；双击屏幕，换一种心情。这里整理了使用方法与常见问题。</p>
+        <nav class="switch" aria-label="Language">
+            <button id="btn-zh" type="button" onclick="showLang('zh')">简体中文</button>
+            <button id="btn-en" type="button" onclick="showLang('en')">English</button>
+        </nav>
+
+        <article id="content-zh">
+            <section class="row"><h2>如何使用</h2><div><div class="answer"><h3>切换语录</h3><p>在主页面上下滑动，即可浏览下一条或上一条语录。</p></div><div class="answer"><h3>切换背景</h3><p>双击页面空白区域，即可切换背景配色。</p></div><div class="answer"><h3>收藏语录</h3><p>轻点底部的爱心按钮收藏当前语录；轻点收藏夹按钮可查看并跳转至已收藏内容。</p></div></div></section>
+            <section class="row"><h2>通知提醒</h2><div><p>轻点底部通知按钮，可选择提醒频率与时间。若未收到提醒，请在“系统设置 → 通知 → 兴曰”中确认已允许通知。</p></div></section>
+            <section class="row"><h2>常见问题</h2><div><div class="answer"><h3>更换设备后收藏还在吗？</h3><p>收藏和设置保存在当前设备本地，不会通过兴曰的服务器同步。</p></div><div class="answer"><h3>语录来源在哪里？</h3><p>应用内语录均附有整理时使用的公开来源与日期信息。</p></div></div></section>
+            <section class="row"><h2>联系支持</h2><div><p>如问题仍未解决，请发送邮件至 <a href="mailto:madfool@icloud.com">madfool@icloud.com</a>。</p></div></section>
+        </article>
+
+        <article id="content-en">
+            <section class="row"><h2>Using Xing Said</h2><div><div class="answer"><h3>Browse quotes</h3><p>Swipe up or down on the main screen to move between quotes.</p></div><div class="answer"><h3>Change the background</h3><p>Double-tap an empty area to switch to another background color.</p></div><div class="answer"><h3>Save favorites</h3><p>Tap the heart button to save the current quote. Open Favorites from the toolbar to revisit saved quotes.</p></div></div></section>
+            <section class="row"><h2>Notifications</h2><div><p>Use the notification button to choose a reminder schedule. If reminders do not appear, enable notifications for Xing Said in iOS Settings.</p></div></section>
+            <section class="row"><h2>Common questions</h2><div><div class="answer"><h3>Do favorites sync to a new device?</h3><p>Favorites and preferences are stored locally on the current device and are not synced through our servers.</p></div><div class="answer"><h3>Where do the quotes come from?</h3><p>Quotes include the public source and date information available when they were compiled.</p></div></div></section>
+            <section class="row"><h2>Contact</h2><div><p>Still need help? Email <a href="mailto:madfool@icloud.com">madfool@icloud.com</a>.</p></div></section>
+        </article>
+        <footer><span>© 2026 Cheng Liang</span><a href="../privacy/">隐私政策 / Privacy</a></footer>
+    </main>
+    <script>
+        function showLang(lang) {
+            document.querySelectorAll('article').forEach((el) => el.classList.remove('active'));
+            document.querySelectorAll('.switch button').forEach((el) => el.classList.remove('active'));
+            document.getElementById('content-' + lang).classList.add('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        }
+        showLang((navigator.language || '').startsWith('zh') ? 'zh' : 'en');
+    </script>
+</body>
+</html>
